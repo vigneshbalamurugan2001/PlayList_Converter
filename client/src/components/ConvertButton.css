@@ -1,0 +1,26 @@
+.convert-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.convert-btn {
+  padding: 20px 50px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(29, 185, 84, 0.3);
+}
+
+.convert-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(29, 185, 84, 0.4);
+}
+
+.convert-hint {
+  margin-top: 15px;
+  color: #666;
+  font-style: italic;
+}
