@@ -1,52 +1,62 @@
 .auth-buttons {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   flex-wrap: wrap;
 }
 
 .auth-btn {
-  padding: 15px 30px;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-size: 0.95rem;
   font-weight: 600;
-  border: none;
-  border-radius: 50px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   color: white;
-  transition: all 0.3s ease;
   min-width: 200px;
 }
 
 .youtube-btn {
-  background: #ff0000;
+  background: linear-gradient(135deg, var(--youtube-dim), var(--youtube));
+  box-shadow: 0 4px 20px rgba(255, 59, 59, 0.25);
 }
 
 .youtube-btn:hover:not(:disabled) {
-  background: #cc0000;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+  box-shadow: 0 8px 28px rgba(255, 59, 59, 0.4);
 }
 
 .spotify-btn {
-  background: #1db954;
+  background: linear-gradient(135deg, var(--spotify-dim), var(--spotify));
+  box-shadow: 0 4px 20px rgba(29, 185, 84, 0.25);
 }
 
 .spotify-btn:hover:not(:disabled) {
-  background: #1ed760;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(29, 185, 84, 0.3);
+  box-shadow: 0 8px 28px rgba(29, 185, 84, 0.4);
 }
 
 .auth-btn.connected {
-  opacity: 0.7;
+  background: var(--glass-strong);
+  border-color: var(--border);
+  color: var(--text-dim);
+  box-shadow: none;
 }
 
-@media (max-width: 768px) {
+.auth-btn.connected svg {
+  color: var(--spotify-dim);
+}
+
+@media (max-width: 640px) {
   .auth-buttons {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .auth-btn {
     min-width: auto;
   }

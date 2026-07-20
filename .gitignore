@@ -38,3 +38,7 @@ Thumbs.db
 # Misc
 .cache
 .temp
+
+# ignore .lock files
+ client/package-lock.json
+ server/package-lock.json

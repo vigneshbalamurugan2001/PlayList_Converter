@@ -1,26 +1,59 @@
 .convert-section {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 28px;
 }
 
 .convert-btn {
-  padding: 20px 50px;
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 44px;
+  font-size: 1.05rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--spotify-dim) 0%, var(--spotify) 100%);
+  color: #06180d;
   border: none;
-  border-radius: 50px;
-  box-shadow: 0 5px 20px rgba(29, 185, 84, 0.3);
+  border-radius: 999px;
+  box-shadow: 0 6px 24px rgba(29, 185, 84, 0.35);
+  animation: pulse-glow 2.4s ease-in-out infinite;
 }
 
 .convert-btn:hover:not(:disabled) {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(29, 185, 84, 0.4);
+  box-shadow: 0 10px 32px rgba(29, 185, 84, 0.5);
+}
+
+.convert-btn:disabled {
+  animation: none;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 6px 24px rgba(29, 185, 84, 0.35);
+  }
+  50% {
+    box-shadow: 0 6px 32px rgba(29, 185, 84, 0.6);
+  }
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(6, 24, 13, 0.3);
+  border-top-color: #06180d;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .convert-hint {
-  margin-top: 15px;
-  color: #666;
+  margin-top: 14px;
+  color: var(--text-dimmer);
+  font-size: 0.9rem;
   font-style: italic;
 }

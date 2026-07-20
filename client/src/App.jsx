@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     // Check authentication status on load
     loadAuthStatus();
-    
+
     // Check for auth callback in URL
     const params = new URLSearchParams(window.location.search);
     if (params.get('youtube') === 'success') {

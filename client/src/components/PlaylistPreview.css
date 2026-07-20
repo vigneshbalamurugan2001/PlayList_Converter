@@ -1,47 +1,56 @@
 .playlist-preview {
-  margin: 30px 0;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 15px;
+  margin: 28px 0;
+  padding: 22px;
+  background: var(--glass-strong);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  animation: rise 0.4s var(--ease);
 }
 
 .playlist-preview h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #333;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
 }
 
 .description {
-  color: #666;
+  color: var(--text-dim);
   margin-bottom: 10px;
-  font-style: italic;
+  font-size: 0.9rem;
 }
 
 .song-count {
-  color: #667eea;
+  display: inline-block;
+  color: var(--accent);
   font-weight: 600;
-  margin-bottom: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
 }
 
 .songs-list {
-  max-height: 400px;
+  max-height: 380px;
   overflow-y: auto;
-  padding-right: 10px;
+  padding-right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .song-item {
   display: flex;
   align-items: center;
   padding: 12px;
-  background: white;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  transition: transform 0.2s ease;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s var(--ease);
 }
 
 .song-item:hover {
-  transform: translateX(5px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border);
 }
 
 .song-number {
@@ -50,12 +59,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #667eea;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
   color: white;
   border-radius: 50%;
   font-weight: 600;
-  font-size: 0.9rem;
-  margin-right: 15px;
+  font-size: 0.8rem;
+  margin-right: 14px;
   flex-shrink: 0;
 }
 
@@ -66,16 +75,16 @@
 
 .song-title {
   font-weight: 600;
-  color: #333;
-  margin-bottom: 4px;
+  color: var(--text);
+  margin-bottom: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .song-artist {
-  color: #666;
-  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-size: 0.85rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -83,25 +92,8 @@
 
 .more-songs {
   text-align: center;
-  padding: 15px;
-  color: #666;
+  padding: 12px;
+  color: var(--text-dimmer);
+  font-size: 0.9rem;
   font-style: italic;
-}
-
-.songs-list::-webkit-scrollbar {
-  width: 8px;
-}
-
-.songs-list::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.songs-list::-webkit-scrollbar-thumb {
-  background: #667eea;
-  border-radius: 10px;
-}
-
-.songs-list::-webkit-scrollbar-thumb:hover {
-  background: #5568d3;
 }
