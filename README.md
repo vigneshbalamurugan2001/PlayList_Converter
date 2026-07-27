@@ -35,7 +35,7 @@ A web application that converts YouTube playlists to Spotify playlists.
 #### Spotify API:
 1. Go to [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
 2. Create a new app
-3. Add redirect URI: `http://localhost:5000/auth/spotify/callback`
+3. Add redirect URI: `http://127.0.0.1:5000/auth/spotify/callback` (Spotify requires the literal `127.0.0.1`, not `localhost`, for HTTP redirect URIs)
 4. Note your Client ID and Client Secret
 
 ### 2. Install Dependencies
@@ -63,10 +63,10 @@ YOUTUBE_CLIENT_ID=your_youtube_client_id
 YOUTUBE_CLIENT_SECRET=your_youtube_client_secret
 YOUTUBE_REDIRECT_URI=http://localhost:5000/auth/youtube/callback
 
-# Spotify API
+# Spotify API (127.0.0.1, not localhost — see note above)
 SPOTIFY_CLIENT_ID=your_spotify_client_id
 SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
-SPOTIFY_REDIRECT_URI=http://localhost:5000/auth/spotify/callback
+SPOTIFY_REDIRECT_URI=http://127.0.0.1:5000/auth/spotify/callback
 
 # Session Secret
 SESSION_SECRET=your_random_session_secret_here

@@ -38,6 +38,15 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
+// Root — this is an API server; the app itself lives on the client dev server
+app.get('/', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Playlist Converter API is running.',
+    frontend: process.env.CLIENT_URL || 'http://localhost:5173'
+  });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Error:', err);
