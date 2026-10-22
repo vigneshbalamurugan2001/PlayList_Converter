@@ -31,7 +31,8 @@ export const handleYouTubeCallback = async (req, res) => {
     const { tokens } = await oauth2Client.getToken(code);
     
     // Store tokens in session
-    req.session.youtubeTokens = tokens;
+    const { id_token, ...slimTokens } = tokens;
+    req.session.youtubeTokens = slimTokens;
     req.session.youtubeAuthenticated = true;
     
     res.redirect(`${process.env.CLIENT_URL}?youtube=success`);
@@ -106,10 +107,6 @@ export const getAuthStatus = (req, res) => {
 
 // Logout
 export const logout = (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ error: 'Failed to logout' });
-    }
-    res.json({ message: 'Logged out successfully' });
-  });
+  req.session = null;
+  res.json({ message: 'Logged out successfully' });
 };

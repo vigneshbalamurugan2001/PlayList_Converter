@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import session from 'express-session';
+import session from 'cookie-session';
 import authRoutes from './routes/authRoutes.js';
 import playlistRoutes from './routes/playlistRoutes.js';
 
@@ -17,16 +17,16 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Session configuration
+// Session configuration (signed cookie; serverless-safe)
+const isProd = process.env.NODE_ENV === 'production';
+app.set('trust proxy', 1);
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'your-secret-key-change-in-production',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: process.env.NODE_ENV === 'production',
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
-  }
+  name: 'session',
+  keys: [process.env.SESSION_SECRET || 'your-secret-key-change-in-production'],
+  maxAge: 24 * 60 * 60 * 1000,
+  httpOnly: true,
+  secure: isProd,
+  sameSite: isProd ? 'none' : 'lax'
 }));
 
 // Routes
@@ -56,8 +56,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-});
+// Start server locally; Vercel imports the app instead
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  });
+}
+
+export default app;
