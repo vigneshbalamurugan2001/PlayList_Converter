@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../services/api';
 import './AuthButtons.css';
 
 function CheckIcon() {
@@ -32,11 +33,11 @@ function SpotifyIcon() {
 
 function AuthButtons({ authStatus }) {
   const handleYouTubeAuth = () => {
-    window.location.href = 'http://localhost:5000/auth/youtube';
+    window.location.href = `${API_BASE_URL}/auth/youtube`;
   };
 
   const handleSpotifyAuth = () => {
-    window.location.href = 'http://localhost:5000/auth/spotify';
+    window.location.href = `${API_BASE_URL}/auth/spotify`;
   };
 
   return (
